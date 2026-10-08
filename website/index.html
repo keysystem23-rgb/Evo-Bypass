@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVO BYPASS - Free Instant Bypasser</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      border-bottom: 1px solid #e5e5e7;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #1d1d1f;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #00d4aa 0%, #00a67e 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #6e6e73;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #1d1d1f;
+    }
+
+    /* Main */
+    .main {
+      max-width: 680px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6e6e73;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1d1d1f;
+      line-height: 1.1;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, #00d4aa 0%, #00a67e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #6e6e73;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* Bypass Card */
+    .bypass-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e5e5e7;
+      margin-bottom: 40px;
+    }
+
+    .input-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 16px;
+      background: #f5f5f7;
+      border: 1px solid #e5e5e7;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #1d1d1f;
+      transition: all 0.2s;
+      font-family: inherit;
+      margin-bottom: 16px;
+    }
+
+    .input-field:focus {
+      outline: none;
+      background: white;
+      border-color: #00d4aa;
+      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+    }
+
+    .input-field::placeholder {
+      color: #86868b;
+    }
+
+    .captcha {
+      background: #f5f5f7;
+      border: 1px solid #e5e5e7;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .captcha:hover {
+      background: #ebebed;
+    }
+
+    .checkbox {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #d2d2d7;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .checkbox.checked {
+      background: linear-gradient(135deg, #00d4aa 0%, #00a67e 100%);
+      border-color: #00d4aa;
+      color: white;
+    }
+
+    .captcha-text {
+      font-size: 14px;
+      color: #1d1d1f;
+      font-weight: 500;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4aa 0%, #00a67e 100%);
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Result */
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background: #e8f5f3;
+      border: 1px solid #00d4aa;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .result-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #00a67e;
+      margin-bottom: 12px;
+    }
+
+    .result-link {
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1d1d1f;
+      word-break: break-all;
+      margin-bottom: 12px;
+      border: 1px solid #e5e5e7;
+    }
+
+    .result-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #6e6e73;
+      margin-bottom: 12px;
+    }
+
+    .btn-copy {
+      width: 100%;
+      padding: 10px;
+      background: #00d4aa;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #00a67e;
+    }
+
+    /* Services */
+    .services {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .services-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6e6e73;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .service-tag {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid #e5e5e7;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #6e6e73;
+      transition: all 0.2s;
+    }
+
+    .service-tag:hover {
+      border-color: #00d4aa;
+      color: #00a67e;
+    }
+
+    /* Footer */
+    .footer {
+      background: white;
+      border-top: 1px solid #e5e5e7;
+      padding: 60px 40px 40px;
+      margin-top: 120px;
+    }
+
+    .footer-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      font-size: 14px;
+      color: #6e6e73;
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #1d1d1f;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: #6e6e73;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #00d4aa;
+    }
+
+    .footer-bottom {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid #e5e5e7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #86868b;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #00d4aa;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: #6e6e73;
+      font-size: 14px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #e5e5e7;
+      border-top-color: #00d4aa;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 16px 20px;
+      }
+
+      .nav {
+        gap: 20px;
+      }
+
+      .main {
+        margin: 40px auto;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .bypass-card {
+        padding: 28px 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">E</div>
+      <span>EVO BYPASS</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="bot.html">Bot</a>
+      <a href="https://urpy.link/gkLVl4" target="_blank">Donate</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="label">BYPASS</div>
+    <h1>Bypass <span class="highlight">Platoboost</span></h1>
+    <p class="subtitle">
+      In 10 seconds, no surveys, no results. Get your result instantly. Bypass Linkvertise, Loot-Link, Rekonise, Work.ink, Lockr.so, Shrtfly, and many other shorteners.
+    </p>
+
+    <!-- Bypass Card -->
+    <div class="bypass-card">
+      <label class="input-label">Paste your link</label>
+      <input 
+        type="text" 
+        class="input-field" 
+        id="linkInput"
+        placeholder="https://rekonise.com/blox-fruits-script-587c8"
+      >
+
+      <div class="captcha" id="captcha">
+        <div class="checkbox" id="checkbox"></div>
+        <span class="captcha-text">I am human</span>
+      </div>
+
+      <button class="btn btn-primary" id="bypassBtn">
+        Bypass Now
+      </button>
+
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div>Bypassing...</div>
+      </div>
+
+      <div class="result" id="result">
+        <div class="result-title">✅ Bypass successful!</div>
+        <div class="result-link" id="resultLink"></div>
+        <div class="result-info">
+          <span id="serviceInfo">Service: Rekonise</span>
+          <span id="timeInfo">Time: 2.08s</span>
+        </div>
+        <button class="btn-copy" onclick="copyResult()">
+          📋 Copy Link
+        </button>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="services">
+      <div class="services-title">Supported Services</div>
+      <div class="services-grid">
+        <span class="service-tag">Linkvertise</span>
+        <span class="service-tag">Work.ink</span>
+        <span class="service-tag">Lootlabs</span>
+        <span class="service-tag">Rekonise</span>
+        <span class="service-tag">Platoboost</span>
+        <span class="service-tag">Sub2Unlock</span>
+        <span class="service-tag">Boost.ink</span>
+        <span class="service-tag">Lockr.so</span>
+        <span class="service-tag">Shrtfly</span>
+        <span class="service-tag">+40 more</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 16px;">
+          <div class="logo-icon">E</div>
+          <span>EVO BYPASS</span>
+        </div>
+        <p class="footer-brand">
+          Free instant bypasser for Linkvertise, Work.ink, Lootlabs, Admaven and key systems — no surveys, no downloads.
+        </p>
+      </div>
+      <div>
+        <div class="footer-title">Product</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="bot.html">Bot</a>
+          <a href="https://urpy.link/gkLVl4" target="_blank">Donate</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Resources</div>
+        <div class="footer-links">
+          <a href="#">Status</a>
+          <a href="#">Discord</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <div class="footer-links">
+          <a href="#">Docs</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>EVO BYPASS © 2025-2026</span>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span>Operational</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    let captchaChecked = false;
+    let currentResult = '';
+    let bypassCount = parseInt(localStorage.getItem('bypassCount') || '0');
+
+    // Update bypass count on load
+    updateBypassCount();
+
+    function updateBypassCount() {
+      const countElement = document.querySelector('.service-tag:last-child');
+      if (countElement && bypassCount > 0) {
+        countElement.textContent = `${bypassCount} bypassed`;
+      }
+    }
+
+    // Captcha
+    document.getElementById('captcha').addEventListener('click', function() {
+      captchaChecked = !captchaChecked;
+      const checkbox = document.getElementById('checkbox');
+      checkbox.classList.toggle('checked');
+      checkbox.textContent = captchaChecked ? '✓' : '';
+    });
+
+    // Bypass with enhanced error handling and retry logic
+    document.getElementById('bypassBtn').addEventListener('click', async function() {
+      const input = document.getElementById('linkInput');
+      const btn = this;
+      const loading = document.getElementById('loading');
+      const result = document.getElementById('result');
+      const link = input.value.trim();
+
+      if (!link) {
+        showNotification('Please enter a link!', 'error');
+        return;
+      }
+
+      if (!this.isValidUrl(link)) {
+        showNotification('Please enter a valid URL!', 'error');
+        return;
+      }
+
+      if (!captchaChecked) {
+        showNotification('Please verify you are human!', 'error');
+        return;
+      }
+
+      result.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+      loading.classList.add('show');
+
+      const startTime = Date.now();
+
+      try {
+        const apiUrl = (window.API_CONFIG && window.API_CONFIG.ENDPOINTS && window.API_CONFIG.ENDPOINTS.BYPASS)
+          ? window.API_CONFIG.ENDPOINTS.BYPASS
+          : 'http://localhost:4000/api/bypass/bypass';
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: link })
+        });
+
+        const data = await response.json();
+        const processingTime = Date.now() - startTime;
+
+        loading.classList.remove('show');
+        btn.disabled = false;
+        btn.textContent = 'Bypass Now';
+
+        if (data.success && data.destination) {
+          currentResult = data.destination;
+          document.getElementById('resultLink').textContent = data.destination;
+          document.getElementById('serviceInfo').textContent = `Service: ${data.service || 'Unknown'}`;
+          document.getElementById('timeInfo').textContent = `Time: ${(data.processingTime || processingTime) / 1000}s`;
+          result.classList.add('show');
+          
+          // Increment bypass count
+          bypassCount++;
+          localStorage.setItem('bypassCount', bypassCount.toString());
+          updateBypassCount();
+          
+          showNotification('✅ Bypass successful!', 'success');
+          
+          // Auto-copy to clipboard
+          try {
+            await navigator.clipboard.writeText(data.destination);
+            showNotification('📋 Link copied to clipboard!', 'info');
+          } catch {}
+        } else {
+          showNotification(`Bypass failed: ${data.error || 'Unknown error'}`, 'error');
+        }
+      } catch (error) {
+        loading.classList.remove('show');
+        btn.disabled = false;
+        btn.textContent = 'Bypass Now';
+        showNotification('Error: Make sure the backend is running', 'error');
+        console.error('Bypass error:', error);
+      }
+    });
+
+    // Copy function
+    function copyResult() {
+      navigator.clipboard.writeText(currentResult).then(() => {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+        showNotification('Link copied to clipboard!', 'success');
+      }).catch(() => {
+        showNotification('Failed to copy link', 'error');
+      });
+    }
+
+    // URL validation
+    function isValidUrl(string) {
+      try {
+        const url = new URL(string);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    }
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.textContent = message;
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        background: ${type === 'success' ? '#00d4aa' : type === 'error' ? '#ff4444' : '#0066ff'};
+        color: white;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+      }, 3000);
+    }
+
+    // Add CSS for notifications
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Enter key support
+    document.getElementById('linkInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('bypassBtn').click();
+      }
+    });
+
+    // Auto-detect and fill example links
+    const exampleLinks = [
+      'https://linkvertise.com/123456/example',
+      'https://work.ink/example',
+      'https://lootlabs.gg/example',
+      'https://rekonise.com/example',
+      'https://platoboost.com/example'
+    ];
+
+    // Add quick fill buttons (optional enhancement)
+    const quickFillContainer = document.createElement('div');
+    quickFillContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
+    quickFillContainer.innerHTML = `
+      <small style="color: #86868b; font-size: 12px; width: 100%; margin-bottom: 4px;">Quick test:</small>
+    `;
+    
+    exampleLinks.slice(0, 3).forEach(link => {
+      const btn = document.createElement('button');
+      btn.textContent = new URL(link).hostname.split('.')[0];
+      btn.style.cssText = `
+        padding: 6px 12px;
+        background: #f5f5f7;
+        border: 1px solid #e5e5e7;
+        border-radius: 6px;
+        font-size: 11px;
+        cursor: pointer;
+        transition: all 0.2s;
+      `;
+      btn.onclick = () => {
+        document.getElementById('linkInput').value = link;
+        showNotification(`Filled with ${new URL(link).hostname} example`, 'info');
+      };
+      btn.onmouseenter = () => {
+        btn.style.background = '#e5e5e7';
+        btn.style.borderColor = '#00d4aa';
+      };
+      btn.onmouseleave = () => {
+        btn.style.background = '#f5f5f7';
+        btn.style.borderColor = '#e5e5e7';
+      };
+      quickFillContainer.appendChild(btn);
+    });
+    
+    document.querySelector('.input-field').after(quickFillContainer);
+  </script>
+</body>
+</html>

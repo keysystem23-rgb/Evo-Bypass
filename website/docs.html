@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html"><span class="brand-mark">S</span><span data-site-name>izen.lol</span></a>
+      <nav class="nav-links">
+        <a class="nav-link" data-nav href="index.html">Home</a>
+        <a class="nav-link" data-nav href="supported.html">Supported</a>
+        <a class="nav-link" data-nav href="pricing.html">Pricing</a>
+        <a class="nav-link" data-nav href="bot.html">Bot</a>
+        <a class="nav-link" data-nav href="blog.html">Blog</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-link icon-button" href="auth.html">L</a>
+        <a class="icon-link icon-button" href="status.html">A</a>
+        <a class="icon-link icon-button discord-button" data-support-url target="_blank" rel="noreferrer" href="#">D</a>
+        <button class="icon-button" data-theme-toggle type="button">T</button>
+      </div>
+    </div>
+    <div class="container mobile-nav">
+      <a class="nav-link" data-nav href="index.html">Home</a>
+      <a class="nav-link" data-nav href="supported.html">Supported</a>
+      <a class="nav-link" data-nav href="pricing.html">Pricing</a>
+      <a class="nav-link" data-nav href="bot.html">Bot</a>
+      <a class="nav-link" data-nav href="blog.html">Blog</a>
+    </div>
+  </header>
+
+  <main class="page-section">
+    <div class="container">
+      <div class="dashboard-grid">
+        <div class="card dashboard-sidebar">
+          <div class="dashboard-item">Authentication</div>
+          <div class="dashboard-item">API Keys</div>
+          <div class="dashboard-item">Supported Services</div>
+          <div class="dashboard-item">Rate Limits</div>
+          <div class="dashboard-item">Bot Invite</div>
+          <div class="dashboard-item">Status</div>
+        </div>
+        <div class="card">
+          <p class="section-label">API docs</p>
+          <h1 class="section-title" style="font-size:46px;">Authenticate and query supported services</h1>
+          <pre class="code-block">GET /api/supported
+Authorization: Bearer your_api_key
+
+{
+  "category": "ad-link",
+  "search": "work.ink"
+}</pre>
+          <p class="muted">The API is structured around scoped keys, predictable JSON contracts, and stable service metadata.</p>
+          <p class="muted">Use the bot invite flow and supported-services endpoints as the first public integration surfaces.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="index.html"><span class="brand-mark">S</span><span data-site-name>izen.lol</span></a><p class="footer-copy">Free instant bypasser for Linkvertise, Work.ink, Lootlabs, Admaven and key systems - no surveys, no downloads.</p></div>
+      <div><p class="footer-column-title">Product</p><div class="footer-links"><a href="index.html">Home</a><a href="supported.html">Supported</a><a href="pricing.html">API</a><a href="bot.html">Bot</a></div></div>
+      <div><p class="footer-column-title">Resources</p><div class="footer-links"><a href="blog.html">Blog</a><a href="status.html">Status</a><a data-support-url target="_blank" rel="noreferrer" href="#">Discord</a></div></div>
+      <div><p class="footer-column-title">Legal</p><div class="footer-links"><a href="docs.html">Docs</a><a href="profile.html">Profile</a><a href="dashboard.html">Dashboard</a></div></div>
+    </div>
+    <div class="container footer-bottom"><p><span data-site-name>izen.lol</span> (c) 2025-2026</p><div class="status-chip"><span class="status-dot"></span>Operational</div></div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

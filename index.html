@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVO Bypass - Free Link Bypasser</title>
+    <meta name="description" content="Bypass Linkvertise, Lootlabs, Work.ink and 30+ more services instantly. Free, fast, no surveys.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666666;
+            margin-top: 5px;
+        }
+
+        /* Bypass Form */
+        .bypass-form {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .form-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 18px 24px;
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        input[type="url"]::placeholder {
+            color: #666666;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Result Box */
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .result-url {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .result-url input {
+            flex: 1;
+            padding: 12px;
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .btn-small {
+            padding: 12px 20px;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-small:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* Error Box */
+        .error-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 12px;
+            color: #ff6b6b;
+            display: none;
+        }
+
+        .error-box.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        /* Services */
+        .services {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-label {
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .service-tag {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .service-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-tag.more {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #a0a0a0;
+            line-height: 1.8;
+        }
+
+        /* Donate Section */
+        .donate-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+        }
+
+        .donate-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .donate-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .donate-card h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .donate-text {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .btn-donate {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-donate:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .donate-note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #666666;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-top-color: #000000;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">EVO BYPASS</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="https://github.com/akatsukixpain12-stack/Evo-Bypass" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>EVO BYPASS</h1>
+            <p class="subtitle">Bypass 30+ Link Services Instantly</p>
+            <p class="description">Free • Fast • No Surveys • No Downloads</p>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalBypassed">23,387,799</div>
+                    <div class="stat-label">Links Bypassed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Services</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+
+            <!-- Bypass Form -->
+            <div class="bypass-form">
+                <div class="form-card">
+                    <form id="bypassForm">
+                        <div class="input-group">
+                            <input 
+                                type="url" 
+                                id="urlInput" 
+                                placeholder="https://linkvertise.com/123456/example"
+                                required
+                            >
+                        </div>
+
+                        <div class="error-box" id="errorBox"></div>
+
+                        <div class="result-box" id="resultBox">
+                            <div class="result-label">Bypassed URL:</div>
+                            <div class="result-url">
+                                <input type="text" id="resultUrl" readonly>
+                                <button type="button" class="btn-small" onclick="copyResult()">Copy</button>
+                                <button type="button" class="btn-small btn-primary" onclick="openResult()">Open</button>
+                            </div>
+                            <div class="result-label" id="processingTime"></div>
+                        </div>
+
+                        <button type="submit" class="btn" id="submitBtn">
+                            Bypass Link
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Supported Services -->
+            <div class="services">
+                <div class="services-label">SUPPORTED SERVICES</div>
+                <div class="service-tags">
+                    <span class="service-tag">Linkvertise</span>
+                    <span class="service-tag">Lootlabs</span>
+                    <span class="service-tag">Work.ink</span>
+                    <span class="service-tag">Rekonise</span>
+                    <span class="service-tag">Platoboost</span>
+                    <span class="service-tag">Admaven</span>
+                    <span class="service-tag">Lockr.so</span>
+                    <span class="service-tag">Shrtfly</span>
+                    <span class="service-tag more">+22 More</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose EVO Bypass?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Bypass links in seconds with our optimized infrastructure and powerful servers</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>Your privacy matters. We don't store or track your links. Everything stays private</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Always Free</h3>
+                    <p>No hidden fees, no premium tiers, no subscriptions. Free forever for everyone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="donate-section" id="donate">
+        <div class="container">
+            <div class="donate-card">
+                <h2>Support EVO Bypass</h2>
+                <p class="donate-text">
+                    If you find EVO Bypass useful, consider supporting the project!<br>
+                    Your donation helps keep the servers running and development active.
+                </p>
+                <a href="https://urpy.link/gkLVl4" target="_blank" class="btn-donate">
+                    ❤️ Donate Now
+                </a>
+                <p class="donate-note">Every contribution helps us improve and add more features!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EVO Bypass. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/akatsukixpain12-stack/Evo-Bypass" target="_blank" style="color: #ffffff; text-decoration: none;">
+                    View on GitHub
+                </a>
+                 • 
+                <a href="#donate" style="color: #ffffff; text-decoration: none;">
+                    Donate
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let resultData = null;
+
+        // Fetch stats on load
+        fetch(`${API_URL}/stats`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('totalBypassed').textContent = data.stats.total.toLocaleString();
+                }
+            })
+            .catch(err => console.error('Stats error:', err));
+
+        // Handle form submission
+        document.getElementById('bypassForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const url = document.getElementById('urlInput').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const errorBox = document.getElementById('errorBox');
+            const resultBox = document.getElementById('resultBox');
+
+            // Reset
+            errorBox.classList.remove('show');
+            resultBox.classList.remove('show');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
+
+            try {
+                const response = await fetch(`${API_URL}/bypass`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show result
+                    resultData = data;
+                    document.getElementById('resultUrl').value = data.destination;
+                    document.getElementById('processingTime').textContent = 
+                        `Processed in ${data.processingTime}ms • Service: ${data.service}`;
+                    resultBox.classList.add('show');
+
+                    // Update stats
+                    const currentTotal = parseInt(document.getElementById('totalBypassed').textContent.replace(/,/g, ''));
+                    document.getElementById('totalBypassed').textContent = (currentTotal + 1).toLocaleString();
+                } else {
+                    // Show error
+                    errorBox.textContent = data.error || 'Bypass failed. Please try again.';
+                    errorBox.classList.add('show');
+                }
+            } catch (error) {
+                errorBox.textContent = 'Network error. Make sure the server is running on port 3000.';
+                errorBox.classList.add('show');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Bypass Link';
+            }
+        });
+
+        // Copy result
+        function copyResult() {
+            const resultUrl = document.getElementById('resultUrl');
+            resultUrl.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        }
+
+        // Open result
+        function openResult() {
+            if (resultData && resultData.destination) {
+                window.open(resultData.destination, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>

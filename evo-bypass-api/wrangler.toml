@@ -1,0 +1,9 @@
+name = "evo-bypass-api"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+CORS_ORIGIN = "*"
+API_KEY = "change-me-in-production"
+NODE_ENV = "production"
